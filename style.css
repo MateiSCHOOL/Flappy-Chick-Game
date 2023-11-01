@@ -1,0 +1,37 @@
+#myTitle{
+    font-size: 36px;
+    font-family: cursive;
+    text-align: center;
+}
+
+#myCanvas{
+    background-color: skyblue;
+    display: block;
+    border: 2px solid;
+    margin:auto;
+}
+
+#myScore{
+    font-size: 36px;
+    font-family: cursive;
+    text-align: center;
+}
+
+#myDifficulties{
+    height: 50px;
+    width:300px;
+    border:1px solid;
+    margin:auto;
+    display:grid;
+    grid-template-columns: repeat(3, auto);
+}
+
+.difficulty{
+    height:50px;
+    width:100px;
+    margin:auto;
+    font-size: 24px;
+    font-family: cursive;
+    text-align: center;
+    cursor: pointer;
+}
