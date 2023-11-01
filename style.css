@@ -1,5 +1,5 @@
 html { height: 100% }
-body { min-height: 100% }
+body { min-height: 100%; background-color: rgb(48, 48, 48);}
 
 #myTitle{
     height: 50px;
@@ -17,6 +17,7 @@ body { min-height: 100% }
 }
 
 #myScore{
+    color: white;
     font-size: 32px;
     font-family: cursive;
     text-align: center;
@@ -26,7 +27,7 @@ body { min-height: 100% }
 #myDifficulties{
     height: 50px;
     width:500px;
-    border:1px solid;
+    border:2px solid;
     margin:auto;
     display:grid;
     grid-template-columns: repeat(3, auto);
