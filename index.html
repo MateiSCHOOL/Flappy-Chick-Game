@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Flappy Chick Game</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- I am using a general HTML Document settings template as I don't really need to change these-->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div id="gameContainer">
+        <!--my prefix used to mark elements belonging to the gameContainer div for greater ease-->
+
+        <div id="myTitle">Flappy Chick</div>
+        <canvas id="myCanvas" height="750" width="500"></canvas>
+        <div id="myScore">0</div>
+        <div id="myDifficulties">
+            <div difficultyIndex="0" class="difficulty" style="background-color: green;">Easy</div>
+            <div difficultyIndex="0.5" class="difficulty" style="background-color: yellow;">Medium</div>
+            <div difficultyIndex="0.75" class="difficulty" style="background-color: red;">Hard</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
