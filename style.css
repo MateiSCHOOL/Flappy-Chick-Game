@@ -28,6 +28,10 @@
     grid-template-columns: repeat(3, auto);
 }
 
+#myCanvas{
+    height: 75%;
+}
+
 .difficulty{
     height:50px;
     width:100px;
