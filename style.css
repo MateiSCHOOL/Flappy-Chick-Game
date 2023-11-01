@@ -25,7 +25,7 @@ body { min-height: 100% }
 
 #myDifficulties{
     height: 50px;
-    width:300px;
+    width:500px;
     border:1px solid;
     margin:auto;
     display:grid;
@@ -34,7 +34,7 @@ body { min-height: 100% }
 
 .difficulty{
     height:50px;
-    width:100px;
+    width:166.6px;
     margin:auto;
     font-size: 24px;
     font-family: cursive;
