@@ -1,8 +1,12 @@
+html { height: 100% }
+body { min-height: 100% }
+
 #myTitle{
+    height: 50px;
     font-size: 36px;
     font-family: cursive;
     text-align: center;
-    height: 50px;
+    display: none;
 }
 
 #myCanvas{
@@ -13,10 +17,10 @@
 }
 
 #myScore{
-    height:50px;
-    font-size: 36px;
+    font-size: 32px;
     font-family: cursive;
     text-align: center;
+    display: none;
 }
 
 #myDifficulties{
@@ -26,10 +30,6 @@
     margin:auto;
     display:grid;
     grid-template-columns: repeat(3, auto);
-}
-
-#myCanvas{
-    height: 75%;
 }
 
 .difficulty{
