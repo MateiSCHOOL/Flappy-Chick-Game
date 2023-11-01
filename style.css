@@ -2,6 +2,7 @@
     font-size: 36px;
     font-family: cursive;
     text-align: center;
+    height: 50px;
 }
 
 #myCanvas{
@@ -12,6 +13,7 @@
 }
 
 #myScore{
+    height:50px;
     font-size: 36px;
     font-family: cursive;
     text-align: center;
