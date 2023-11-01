@@ -3,7 +3,7 @@ const context = canvas.getContext("2d")
 const scoreDisplay = document.getElementById("myScore")
 const difficultyDisplay = document.getElementById("myDifficulties")
 const difficulties = document.querySelectorAll(".difficulty")
-document.body.style.zoom = "75%" /*Zooms out user's POV */
+document.body.style.zoom = screen.height / 11 + "%" /*Zooms user's POV */
 /*
 Basic Setup to allow me to acces DOM (Document Object Model) elements with ease
 */
@@ -149,12 +149,18 @@ function checkScore(){
         createPillars()
         score += 1
         scoreDisplay.textContent = score
+        if (health < 1){
+            health += 0.25
+        }
     }
 }
 /*Checks if game has ended: this occurs when either player has run out of  health, or has collided with the ground/exceeded bounds */
 function checkOver(){
     if (bird.y > 650 || bird.y < 0 || health <= 0){
+        health = 0
         running = false
+        clearCanvas()
+        drawBird()
     }
 }
 /*Checks if player has collided with pillar*/
