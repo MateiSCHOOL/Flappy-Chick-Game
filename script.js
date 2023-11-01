@@ -3,6 +3,7 @@ const context = canvas.getContext("2d")
 const scoreDisplay = document.getElementById("myScore")
 const difficultyDisplay = document.getElementById("myDifficulties")
 const difficulties = document.querySelectorAll(".difficulty")
+document.body.style.zoom = "75%" /*Zooms out user's POV */
 /*
 Basic Setup to allow me to acces DOM (Document Object Model) elements with ease
 */
@@ -55,6 +56,7 @@ function Initialize(){
     let difficultyLevel = Number(this.getAttribute("difficultyIndex"))
     difficultyDisplay.style.display = "none"
     console.log(difficultyLevel)
+    scoreDisplay.style.display = "block"
     /*Program remembers the difficulty to be used at a later date and removes the difficulty selection box since program has started */
  
     score = 0
