@@ -1,10 +1,11 @@
 html { height: 100% }
 body { min-height: 100%; background-color: rgb(48, 48, 48);}
 
+/*Title is hidden for the time being*/
 #myTitle{
     height: 50px;
     font-size: 36px;
-    font-family: cursive;
+    font-family: Permanent Marker, cursive;
     text-align: center;
     display: none;
 }
@@ -19,7 +20,7 @@ body { min-height: 100%; background-color: rgb(48, 48, 48);}
 #myScore{
     color: white;
     font-size: 32px;
-    font-family: cursive;
+    font-family: Permanent Marker, cursive;
     text-align: center;
     display: none;
 }
@@ -38,7 +39,7 @@ body { min-height: 100%; background-color: rgb(48, 48, 48);}
     width:166.6px;
     margin:auto;
     font-size: 24px;
-    font-family: cursive;
+    font-family: Permanent Marker, cursive;
     text-align: center;
     cursor: pointer;
 }
