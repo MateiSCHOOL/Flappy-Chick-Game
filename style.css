@@ -18,10 +18,8 @@ body { min-height: 100%; background-color: rgb(48, 48, 48);}
 }
 
 #myScore{
-    color: white;
-    font-size: 32px;
-    font-family: Permanent Marker, cursive;
-    text-align: center;
+    background-color: rgb(48, 48, 48);
+    margin:auto;
     display: none;
 }
 
