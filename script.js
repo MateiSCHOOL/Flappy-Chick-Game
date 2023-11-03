@@ -1,6 +1,9 @@
 const canvas = document.getElementById("myCanvas")
 const context = canvas.getContext("2d")
+
 const scoreDisplay = document.getElementById("myScore")
+const scoreContext = scoreDisplay.getContext("2d")
+
 const difficultyDisplay = document.getElementById("myDifficulties")
 const difficulties = document.querySelectorAll(".difficulty")
 document.body.style.zoom = screen.height / 11 + "%" /*Zooms user's POV */
@@ -60,7 +63,10 @@ function Initialize(){
     /*Program remembers the difficulty to be used at a later date and removes the difficulty selection box since program has started */
  
     score = 0 /*Resets score */
-    scoreDisplay.textContent = score
+    scoreContext.font = "32px Permanent Marker, Cursive"
+    scoreContext.fillStyle = "white"
+    scoreContext.textAlign = "center"
+    scoreContext.fillText(`${score}`, 50, 50)
 
     health = 1 - (difficultyLevel) /*Resets health */
 
@@ -153,7 +159,15 @@ function checkScore(){
     if (pillar1.x + 100 <= 0){
         createPillars()
         score += 1
-        scoreDisplay.textContent = score
+    
+        scoreContext.fillStyle = "rgb(48, 48, 48)"
+        scoreContext.fillRect(0, 0, 100, 100)
+
+        scoreContext.font = "32px Permanent Marker, Cursive"
+        scoreContext.fillStyle = "white"
+        scoreContext.textAlign = "center"
+        scoreContext.fillText(`${score}`, 50, 50)
+
         if (health < 1){
             health += 0.25
         }
