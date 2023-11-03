@@ -10,7 +10,7 @@ Basic Setup to allow me to acces DOM (Document Object Model) elements with ease
 
 /*Variable Setup */
 
-let score, velocity, health, running
+let score, velocity, health, running, bestScore = 0
 
 let bird = {
     x:100,
@@ -59,9 +59,14 @@ function Initialize(){
     scoreDisplay.style.display = "block"
     /*Program remembers the difficulty to be used at a later date and removes the difficulty selection box since program has started */
  
-    score = 0
+    score = 0 /*Resets score */
     scoreDisplay.textContent = score
-    health = 1 - (difficultyLevel)
+
+    health = 1 - (difficultyLevel) /*Resets health */
+
+    bird.y = 100 /*Resets user position */
+
+    /*Initializes game */
     running = true
     clearCanvas()
     drawBird()
@@ -159,8 +164,16 @@ function checkOver(){
     if (bird.y > 650 || bird.y < 0 || health <= 0){
         health = 0
         running = false
-        clearCanvas()
-        drawBird()
+
+        if (bestScore < score){
+            bestScore = score
+        }
+        
+        setTimeout(clearCanvas, 500)
+        setTimeout(loseText, 1000)
+        setTimeout(scoreText, 1000)
+        scoreDisplay.style.display = "none"
+        difficultyDisplay.style.display = "grid"
     }
 }
 /*Checks if player has collided with pillar*/
@@ -173,4 +186,21 @@ function checkCollision(){
             checkOver()
         }
     }
+}
+
+/*Creates the text which informs the user that they have lost*/
+function loseText(){
+    context.font = "36px Permanent Marker, Cursive"
+    context.fillStyle = "red"
+    context.textAlign = "center"
+    context.fillText("poor chick...", 250, 350)
+}
+
+/*Creates the text which states user's best score and current score*/
+function scoreText(){
+    context.font = "30px Permanent Marker, Cursive"
+    context.fillStyle = "white"
+    context.textAlign = "center"
+    context.fillText(`current score: ${score}`, 250, 400)
+    context.fillText(`best score: ${bestScore}`, 250, 450)
 }
