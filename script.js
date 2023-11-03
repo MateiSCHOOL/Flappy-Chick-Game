@@ -70,7 +70,8 @@ function Initialize(){
 
     health = 1 - (difficultyLevel) /*Resets health */
 
-    bird.y = 100 /*Resets user position */
+    bird.x = 100 /*Resets user's x position, in case they've just won and need a reset position */
+    bird.y = 100 /*Resets user's y position */
 
     /*Initializes game */
     running = true
@@ -94,7 +95,7 @@ function nextFrame(difficultyLevel){
 
             checkCollision()
             checkOver()
-            checkScore()
+            checkScore(difficultyLevel)
             clearCanvas()
             drawPillars()
             drawBird()
@@ -155,11 +156,16 @@ function createPillars(){
     pillar2.y = 700 - pillar2.height
 }
 /*Function checks whether player has surpassed pillars so that it can give point and create next pillars */
-function checkScore(){
+function checkScore(difficultyLevel){
     if (pillar1.x + 100 <= 0){
         createPillars()
         score += 1
+
+        if (bestScore < score){
+            bestScore = score
+        }
     
+        /*Resets and writes on the mini canvas, dedicated for score display */
         scoreContext.fillStyle = "rgb(48, 48, 48)"
         scoreContext.fillRect(0, 0, 100, 100)
 
@@ -170,6 +176,11 @@ function checkScore(){
 
         if (health < 1){
             health += 0.25
+            /*Increases health if possible as user surpasses a pillar */
+        }
+
+        if ( (score == 2 && difficultyLevel == 0) || (score == 5 && difficultyLevel == 0.5) || (score == 10 && difficultyLevel == 0.75) ) {
+            winSequence() /*Begins win sequence function if the user has reached the required score for their difficulty */
         }
     }
 }
@@ -178,14 +189,12 @@ function checkOver(){
     if (bird.y > 650 || bird.y < 0 || health <= 0){
         health = 0
         running = false
-
-        if (bestScore < score){
-            bestScore = score
-        }
         
         setTimeout(clearCanvas, 500)
         setTimeout(loseText, 1000)
         setTimeout(scoreText, 1000)
+
+        /*Removes the score indicator from below the canvas and instead shows difficulty bar so user can start new game */
         scoreDisplay.style.display = "none"
         difficultyDisplay.style.display = "grid"
     }
@@ -217,4 +226,30 @@ function scoreText(){
     context.textAlign = "center"
     context.fillText(`current score: ${score}`, 250, 400)
     context.fillText(`best score: ${bestScore}`, 250, 450)
+}
+
+/*Animation for when user has won */
+function winSequence(){
+    const flyInterval = setInterval(flyAnimation, 100)
+    console.log("user has won")
+    function flyAnimation(){
+        if (bird.x <= 500){
+            running = false
+            clearCanvas()
+            bird.x += 15
+            drawBird()
+        }
+        else{
+            clearInterval(flyInterval)
+            context.font = "36px Permanent Marker, Cursive"
+            context.fillStyle = "green"
+            context.textAlign = "center"
+            context.fillText("you've saved the baby chick!", 250, 350)
+            scoreText()
+
+            /*Removes the score indicator from below the canvas and instead shows difficulty bar so user can start new game */
+            scoreDisplay.style.display = "none"
+            difficultyDisplay.style.display = "grid"
+        }
+    }
 }
