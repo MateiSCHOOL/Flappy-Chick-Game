@@ -77,7 +77,7 @@ function Initialize(){
     running = true
     clearCanvas()
     drawBird()
-    createPillars()
+    createPillars(difficultyLevel)
     nextFrame(difficultyLevel)
 }
 
@@ -86,7 +86,7 @@ function nextFrame(difficultyLevel){
     function update(){
         if (running == true){
             velocity = Math.sqrt(19.6*(700 - (700 - bird.y)))
-            velocity = velocity / (4 - difficultyLevel) /*The higher the difficulty level, the higher the velocity */
+            velocity = velocity / 4
             bird.y = bird.y + velocity
             /*Velocity calculated and adjusted for game by me */
 
@@ -144,7 +144,9 @@ function drawPillars(){
 
 /*Generates pillar coordinates*/
 
-function createPillars(){
+function createPillars(difficultyLevel){
+    let auxilary = (difficultyLevel * 50)
+    console.log(auxilary)
     pillar1.x = 500 
     pillar2.x = 500
     function createRandom(){
@@ -152,13 +154,13 @@ function createPillars(){
         /*Generates random integer number between 0 (included) and 25 (excluded)*/
     }
     pillar1.height = createRandom() * 20
-    pillar2.height = pillar1.height + 200
+    pillar2.height = pillar1.height + 200 - auxilary 
     pillar2.y = 700 - pillar2.height
 }
 /*Function checks whether player has surpassed pillars so that it can give point and create next pillars */
 function checkScore(difficultyLevel){
     if (pillar1.x + 100 <= 0){
-        createPillars()
+        createPillars(difficultyLevel)
         score += 1
 
         if (bestScore < score){
@@ -179,7 +181,7 @@ function checkScore(difficultyLevel){
             /*Increases health if possible as user surpasses a pillar */
         }
 
-        if ( (score == 2 && difficultyLevel == 0) || (score == 5 && difficultyLevel == 0.5) || (score == 10 && difficultyLevel == 0.75) ) {
+        if ( (score == 20 && difficultyLevel == 0) || (score == 50 && difficultyLevel == 0.5) || (score == 100 && difficultyLevel == 0.75) ) {
             winSequence() /*Begins win sequence function if the user has reached the required score for their difficulty */
         }
     }
