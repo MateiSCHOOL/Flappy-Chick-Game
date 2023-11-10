@@ -179,7 +179,7 @@ function checkScore(difficultyLevel){
             /*Increases health if possible as user surpasses a pillar */
         }
 
-        if ( (score == 20 && difficultyLevel == 0) || (score == 30 && difficultyLevel == 0.5) || (score == 50 && difficultyLevel == 0.75) ) {
+        if ( (score == 2 && difficultyLevel == 0) || (score == 5 && difficultyLevel == 0.5) || (score == 10 && difficultyLevel == 0.75) ) {
             winSequence() /*Begins win sequence function if the user has reached the required score for their difficulty */
         }
     }
@@ -189,6 +189,9 @@ function checkOver(){
     if (bird.y > 650 || bird.y < 0 || health <= 0){
         health = 0
         running = false
+        clearCanvas()
+        drawBird()
+        drawPillars()
         
         setTimeout(clearCanvas, 500)
         setTimeout(loseText, 1000)
