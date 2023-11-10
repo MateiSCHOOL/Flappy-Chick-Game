@@ -59,13 +59,20 @@ function Initialize(){
     let difficultyLevel = Number(this.getAttribute("difficultyIndex"))
     difficultyDisplay.style.display = "none"
     console.log(difficultyLevel)
-    scoreDisplay.style.display = "block"
+    
     /*Program remembers the difficulty to be used at a later date and removes the difficulty selection box since program has started */
  
     score = 0 /*Resets score */
+
+    /*Resets Score Box */
+    scoreDisplay.style.display = "block"
     scoreContext.font = "32px Permanent Marker, Cursive"
+    scoreContext.fillStyle = "rgb(48, 48, 48)"
+    scoreContext.fillRect(0, 0, 100, 100)
     scoreContext.fillStyle = "white"
     scoreContext.textAlign = "center"
+
+
     scoreContext.fillText(`${score}`, 50, 50)
 
     health = 1 - (difficultyLevel) /*Resets health */
