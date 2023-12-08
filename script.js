@@ -7,6 +7,20 @@ const scoreContext = scoreDisplay.getContext("2d")
 const difficultyDisplay = document.getElementById("myDifficulties")
 const difficulties = document.querySelectorAll(".difficulty")
 document.body.style.zoom = screen.height / 11 + "%" /*Zooms user's POV */
+
+/*Sets up username box input + variable to check whether username already given */
+const userNameBox = document.getElementById("username")
+let usernameGiven = false
+let username
+userNameBox.addEventListener("keyup", event => {
+    if (event.code == "Enter"){
+        username = userNameBox.value 
+        console.log(username)
+        userNameBox.style.display = "none"
+        usernameGiven = true
+    }
+})
+
 /*
 Basic Setup to allow me to acces DOM (Document Object Model) elements with ease
 */
@@ -188,7 +202,7 @@ function checkScore(difficultyLevel){
             /*Increases health if possible as user surpasses a pillar */
         }
 
-        if ( (score == 20 && difficultyLevel == 0) || (score == 50 && difficultyLevel == 0.5) || (score == 100 && difficultyLevel == 0.75) ) {
+        if ( (score == 2 && difficultyLevel == 0) || (score == 50 && difficultyLevel == 0.5) || (score == 100 && difficultyLevel == 0.75) ) {
             winSequence() /*Begins win sequence function if the user has reached the required score for their difficulty */
         }
     }
@@ -209,6 +223,11 @@ function checkOver(){
         /*Removes the score indicator from below the canvas and instead shows difficulty bar so user can start new game */
         scoreDisplay.style.display = "none"
         difficultyDisplay.style.display = "grid"
+
+        /*if username has not been received, then username input becomes available */
+        if (usernameGiven == false) {
+            userNameBox.style.display = "block"
+        }
     }
 }
 /*Checks if player has collided with pillar*/
@@ -225,10 +244,11 @@ function checkCollision(){
 
 /*Creates the text which informs the user that they have lost*/
 function loseText(){
-    context.font = "36px Permanent Marker, Cursive"
+    context.font = "30px Permanent Marker, Cursive"
     context.fillStyle = "red"
     context.textAlign = "center"
     context.fillText("poor chick...", 250, 350)
+    context.fillText(`bad: ${username}`, 250, 500) /*Puts user's name into end screen */
 }
 
 /*Creates the text which states user's best score and current score*/
@@ -243,6 +263,9 @@ function scoreText(){
 /*Animation for when user has won */
 function winSequence(){
     const flyInterval = setInterval(flyAnimation, 100)
+    let x=0
+    x += 1
+
     console.log("user has won")
     function flyAnimation(){
         if (bird.x <= 500){
@@ -256,12 +279,18 @@ function winSequence(){
             context.font = "36px Permanent Marker, Cursive"
             context.fillStyle = "green"
             context.textAlign = "center"
-            context.fillText("you've saved the baby chick!", 250, 350)
+            context.fillText("you saved the baby chick!", 250, 350)
             scoreText()
+            context.fillText(`good job: ${username}`, 250, 500) /*Puts user's name into win screen */
 
             /*Removes the score indicator from below the canvas and instead shows difficulty bar so user can start new game */
             scoreDisplay.style.display = "none"
             difficultyDisplay.style.display = "grid"
+
+            /*if username has not been received, then username input becomes available */
+            if (usernameGiven == false) {
+                userNameBox.style.display = "block"
+            }
         }
     }
 }
