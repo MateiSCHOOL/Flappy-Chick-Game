@@ -41,3 +41,11 @@ body { min-height: 100%; background-color: rgb(48, 48, 48);}
     text-align: center;
     cursor: pointer;
 }
+
+#username{
+    height: 50px;
+    width:500px;
+    border:2px solid;
+    margin:auto;
+    display:block;
+}
