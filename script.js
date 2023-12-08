@@ -202,7 +202,7 @@ function checkScore(difficultyLevel){
             /*Increases health if possible as user surpasses a pillar */
         }
 
-        if ( (score == 2 && difficultyLevel == 0) || (score == 50 && difficultyLevel == 0.5) || (score == 100 && difficultyLevel == 0.75) ) {
+        if ( (score == 20 && difficultyLevel == 0) || (score == 50 && difficultyLevel == 0.5) || (score == 100 && difficultyLevel == 0.75) ) {
             winSequence() /*Begins win sequence function if the user has reached the required score for their difficulty */
         }
     }
