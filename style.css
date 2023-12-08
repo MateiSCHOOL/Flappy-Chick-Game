@@ -47,5 +47,5 @@ body { min-height: 100%; background-color: rgb(48, 48, 48);}
     width:500px;
     border:2px solid;
     margin:auto;
-    display:none;
+    display:block;
 }
