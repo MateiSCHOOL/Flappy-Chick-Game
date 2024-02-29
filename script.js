@@ -51,6 +51,10 @@ let pillar2 = {
 birdImage = new Image()
 birdImage.src = "Bird.png"
 
+/*Sound setup*/
+let flapSound = new Audio("wingflap.mp3")
+let startSound = new Audio("wingstart.mp3")
+let loseSound = new Audio("birdfall.mp3")
 
 difficulties.forEach(difficulty => difficulty.addEventListener("click", Initialize))
 /*Listens for input from user in the difficulty choice box and initializes program by triggering Initialize function*/
@@ -59,12 +63,14 @@ difficulties.forEach(difficulty => difficulty.addEventListener("click", Initiali
 window.addEventListener("keyup", event => {
     if((event.code == "Space" || event.code == "ArrowUp") && running == true){
         bird.y -= 75
+        flapSound.play()
         checkOver()
     }
 })
 canvas.addEventListener("click", event => {
     if(running == true){
         bird.y -= 75
+        flapSound.play()
         checkOver()
     }
 })
@@ -98,6 +104,7 @@ function Initialize(){
     running = true
     clearCanvas()
     drawBird()
+    startSound.play()
     createPillars(difficultyLevel)
     nextFrame(difficultyLevel)
 }
@@ -215,7 +222,7 @@ function checkOver(){
         clearCanvas()
         drawBird()
         drawPillars()
-        
+        loseSound.play()
         setTimeout(clearCanvas, 500)
         setTimeout(loseText, 1000)
         setTimeout(scoreText, 1000)
@@ -272,6 +279,7 @@ function winSequence(){
             running = false
             clearCanvas()
             bird.x += 15
+            flapSound.play()
             drawBird()
         }
         else{
