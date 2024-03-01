@@ -14,7 +14,7 @@ let usernameGiven = false
 let username
 userNameBox.addEventListener("keyup", event => {
     if (event.code == "Enter"){
-        username = userNameBox.value 
+        username = userNameBox.value
         console.log(username)
         userNameBox.style.display = "none"
         usernameGiven = true
@@ -79,7 +79,7 @@ function Initialize(){
     let difficultyLevel = Number(this.getAttribute("difficultyIndex"))
     difficultyDisplay.style.display = "none"
     console.log(difficultyLevel)
-    
+   
     /*Program remembers the difficulty to be used at a later date and removes the difficulty selection box since program has started */
  
     score = 0 /*Resets score */
@@ -175,14 +175,14 @@ function drawPillars(){
 function createPillars(difficultyLevel){
     let auxilary = (difficultyLevel * 50)
     console.log(auxilary)
-    pillar1.x = 500 
+    pillar1.x = 500
     pillar2.x = 500
     function createRandom(){
         return Math.floor(Math.random() * (25))
         /*Generates random integer number between 0 (included) and 25 (excluded)*/
     }
     pillar1.height = createRandom() * 20
-    pillar2.height = pillar1.height + 300 - auxilary 
+    pillar2.height = pillar1.height + 200 - auxilary
     pillar2.y = 700 - pillar2.height
 }
 /*Function checks whether player has surpassed pillars so that it can give point and create next pillars */
@@ -194,7 +194,7 @@ function checkScore(difficultyLevel){
         if (bestScore < score){
             bestScore = score
         }
-    
+   
         /*Resets and writes on the mini canvas, dedicated for score display */
         scoreContext.fillStyle = "rgb(48, 48, 48)"
         scoreContext.fillRect(0, 0, 100, 100)
