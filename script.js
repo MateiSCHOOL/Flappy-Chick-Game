@@ -181,7 +181,7 @@ function createPillars(difficultyLevel){
         return Math.floor(Math.random() * (25))
         /*Generates random integer number between 0 (included) and 25 (excluded)*/
     }
-    pillar1.height = createRandom() * 20 - 250
+    pillar1.height = createRandom() * 20 - 100
     pillar2.height = pillar1.height + 200 - auxilary 
     pillar2.y = 700 - pillar2.height
 }
