@@ -6,7 +6,7 @@ const scoreContext = scoreDisplay.getContext("2d")
 
 const difficultyDisplay = document.getElementById("myDifficulties")
 const difficulties = document.querySelectorAll(".difficulty")
-document.body.style.zoom = screen.height / 11 + "%" /*Zooms user's POV */
+document.body.style.zoom = screen.height / 12 + "%" /*Zooms user's POV */
 
 /*Sets up username box input + variable to check whether username already given */
 const userNameBox = document.getElementById("username")
@@ -181,7 +181,7 @@ function createPillars(difficultyLevel){
         return Math.floor(Math.random() * (25))
         /*Generates random integer number between 0 (included) and 25 (excluded)*/
     }
-    pillar1.height = createRandom() * 20 - 100
+    pillar1.height = createRandom() * 20 - 200
     pillar2.height = pillar1.height + 200 - auxilary 
     pillar2.y = 700 - pillar2.height
 }
