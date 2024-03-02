@@ -173,7 +173,7 @@ function drawPillars(){
 /*Generates pillar coordinates*/
 
 function createPillars(difficultyLevel){
-    let auxilary = (difficultyLevel * 50)
+    let auxilary = (difficultyLevel * 100)
     console.log(auxilary)
     pillar1.x = 500
     pillar2.x = 500
@@ -182,9 +182,9 @@ function createPillars(difficultyLevel){
         /*Generates random integer number between 0 (included) and 25 (excluded)*/
     }
     pillar1.height = createRandom() * 20
-    pillar2.height = pillar1.height + 300 - auxilary
+    pillar2.height = pillar1.height + 220 - auxilary
     pillar2.y = 700 - pillar2.height
-    console.log(pillar2.height, pillar2.y)
+    console.log(pillar2.height - pillar1.height)
 }
 /*Function checks whether player has surpassed pillars so that it can give point and create next pillars */
 function checkScore(difficultyLevel){
