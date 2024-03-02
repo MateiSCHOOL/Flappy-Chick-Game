@@ -184,7 +184,7 @@ function createPillars(difficultyLevel){
     pillar1.height = createRandom() * 20
     pillar2.height = pillar1.height + 300 - auxilary
     pillar2.y = 700 - pillar2.height
-    console.log("Pillar mechanic updated")
+    console.log(pillar2.height, pillar2.y)
 }
 /*Function checks whether player has surpassed pillars so that it can give point and create next pillars */
 function checkScore(difficultyLevel){
