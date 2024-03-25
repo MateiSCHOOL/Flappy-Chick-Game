@@ -1,3 +1,4 @@
+console.log("Version updated 25.03.24")
 const canvas = document.getElementById("myCanvas")
 const context = canvas.getContext("2d")
 
